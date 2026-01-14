@@ -57,7 +57,7 @@ def check_for_appointments():
     # 2. Define Limits (Next 3 Days, After 10:30 AM)
     api_date_str = now_est.strftime("%Y-%m-%d")
     limit_date = now_est + timedelta(days=3)
-    cutoff_time = dt_time(10, 30)
+    cutoff_time = dt_time(8, 30)
     
     print(f"Checking for slots between {api_date_str} and {limit_date.strftime('%Y-%m-%d')} (After 10:30 AM)")
 
