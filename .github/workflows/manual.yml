@@ -2,7 +2,7 @@ name: Check LifeLabs
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # This runs every 15 minutes forever
+    - cron: '*/1 * * * *'  # This runs every 15 minutes forever
   workflow_dispatch:        # This allows you to click a button to test it
 
 jobs:
