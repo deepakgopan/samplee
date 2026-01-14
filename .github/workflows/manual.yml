@@ -1,0 +1,29 @@
+name: Check LifeLabs
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # This runs every 15 minutes forever
+  workflow_dispatch:        # This allows you to click a button to test it
+
+jobs:
+  run-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install requests pytz
+
+      - name: Run script
+        env: 
+          # This pulls the secrets you saved in Settings into the script
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+        run: python lifelabs.py
